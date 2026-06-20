@@ -3,7 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import userRoute from "./routes/userRoute.js";
-import planRoute from "./routes/studyPlanRoute.js"
+import planRoutes from "./routes/studyPlanRoute.js"
 
 dotenv.config();
 
@@ -27,7 +27,7 @@ app.get("/health",(req,res)=>{
 });
 
 app.use("/api/users",userRoute);
-app.use("/api/plans",planRoute);
+app.use("/api/plans",planRoutes);
 
 
 const PORT = process.env.PORT;
