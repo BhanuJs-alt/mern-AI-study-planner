@@ -2,8 +2,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
-import studyPlan from "./models/studyPlan.js";
-import userRoute from "./routes/userRoutes.js";
+import userRoute from "./routes/userRoute.js";
+import planRoute from "./routes/studyPlanRoute.js"
 
 dotenv.config();
 
@@ -11,7 +11,6 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/api/users",userRoute);
 
 app.get("/", (req, res) => {
   res.json({
@@ -27,20 +26,8 @@ app.get("/health",(req,res)=>{
   });
 });
 
- app.get("/create-plan",async (req,res)=>{
-      const user = await studyPlan.create({
-
-       title:"Maths",
-        time:"4 hours"
-      });
-      res.json(user);
- });
-
- app.get("/showPlan" ,async (req,res)=>{
-  const study = await studyPlan.find();
-  res.json(study);
-});
-
+app.use("/api/users",userRoute);
+app.use("/api/plans",planRoute);
 
 const PORT = process.env.PORT;
 
