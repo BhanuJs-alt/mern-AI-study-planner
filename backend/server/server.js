@@ -29,6 +29,7 @@ app.get("/health",(req,res)=>{
 app.use("/api/users",userRoute);
 app.use("/api/plans",planRoute);
 
+
 const PORT = process.env.PORT;
 
 connectDB();
