@@ -3,7 +3,9 @@ import studyPlan from "../models/studyPlan.js";
 export  const getPlans = async (req,res)=>{
 
    try {
-    const plans = await studyPlan.find();
+    const plans = await studyPlan.find( {
+      user: req.user._id,
+    });
     res.json(plans);
    } 
    catch (error) {
@@ -28,6 +30,7 @@ export  const getPlans = async (req,res)=>{
             targetDate:targetDate,
             studyHours:studyHours,
             subject:subject,
+            user:req.user._id
         });
         
         res.status(201).json({
@@ -51,7 +54,7 @@ export const updatePlan = async(req,res) =>{
       req.body,
       { new:true }
      );
-
+     
      res.json({
       message:"updated",
       updatedplan
