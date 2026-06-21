@@ -13,9 +13,9 @@ export  const getPlans = async (req,res)=>{
   
   export const createPlan = async (req,res) => {
     try {
-        const { title , time } = req.body;
+        const { title ,examName,targetDate,studyHours,subject } = req.body;
 
-        if (!title || !time) {
+        if (!title || !examName) {
             return res.status(400).json({
               success: false,
               message: "All fields are required",
@@ -24,13 +24,60 @@ export  const getPlans = async (req,res)=>{
 
         const plans = await studyPlan.create({
             title: title,
-            time :time 
+            examName:examName,
+            targetDate:targetDate,
+            studyHours:studyHours,
+            subject:subject,
         });
         
-        res.status(201).json(plans);
+        res.status(201).json({
+          message:"plan successfully created",
+        });
     } 
     
     catch (error) {
-       console.log(error.message);   
+      res.status(500).json({
+        message:error.message,
+      });
     }
+}
+
+export const updatePlan = async(req,res) =>{
+  try {
+     const { id } = req.params;
+
+    const updatedplan = await studyPlan.findByIdAndUpdate(
+      id,
+      req.body,
+      { new:true }
+     );
+
+     res.json({
+      message:"updated",
+      updatedplan
+     });
+
+  } catch (error) {
+    res.status(500).json({
+      message:error.message,
+   });
+ }
+} 
+
+export const deletePlan = async(req,res) =>{
+  try {
+    const { id } = req.params;
+
+   const deletedPlan = await studyPlan.findByIdAndDelete(id);
+
+    res.status(200).json({
+      message:"Plan deleted",
+      deletedPlan
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message:error.message,
+  });
+  }
 }
