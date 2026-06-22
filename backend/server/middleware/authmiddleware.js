@@ -4,7 +4,6 @@ import User from '../models/User.js';
 const authMiddleware = async (req,res,next)=>{
     try {
         const authHeader = req.headers.authorization;
-        console.log(authHeader);
 
         if(!authHeader){
             return res.status(400).json({

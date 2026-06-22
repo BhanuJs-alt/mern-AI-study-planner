@@ -33,7 +33,7 @@ export const signup = async (req,res) => {
             });
     
             res.status(201).json({
-                message:"user created",
+                message:"sign up successfully please login",
             });
         }
 
