@@ -18,11 +18,30 @@ const studyPlanSchema= new mongoose.Schema({
         type:Number,
         required:true
     },
-    subject:{
+    subjects:{
         type:[String],
         required:true
     },
-    
+     strengths:{
+        type:[String],
+        default:[]
+    },
+     weaknesses:{
+        type:[String],
+        default:[]
+    },
+     completedTopics:{
+        type:[String],
+        default:[]
+    },
+     preferredTime:{
+        type:[String],
+        default:[]
+    },
+    generatedPlan:{
+        type:Object,
+        default:{}
+    },
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref:"User",

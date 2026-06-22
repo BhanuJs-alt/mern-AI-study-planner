@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import userRoute from "./routes/userRoute.js";
 import planRoutes from "./routes/studyPlanRoute.js";
 import authRoutes from './routes/authRoute.js';
+import aiRoute from './routes/aiRoute.js';
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.get("/health",(req,res)=>{
 app.use("/api/users",userRoute);
 app.use("/api/plans",planRoutes);
 app.use ("/api/auth",authRoutes);
+app.use("/api/ai",aiRoute);
 
 
 const PORT = process.env.PORT;

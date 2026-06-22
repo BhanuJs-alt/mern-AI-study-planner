@@ -20,7 +20,7 @@ export const getPlanById = async (req,res)=>{
        try {
          const { id } = req.params;
 
-         const plan = await User.findById(id);
+         const plan = await studyPlan.findById(id);
 
          if(!plan){
               return res.status(404).json({
@@ -43,9 +43,9 @@ export const getPlanById = async (req,res)=>{
   
   export const createPlan = async (req,res) => {
     try {
-        const { title ,examName,targetDate,studyHours,subject } = req.body;
+        const { title ,examName,targetDate,studyHours,subject,strengths,weaknesses,completedTopics,preferredTime } = req.body;
 
-        if (!title || !examName) {
+        if (!title || !examName ||!subject || !studyHours) {
             return res.status(400).json({
               success: false,
               message: "All fields are required",
@@ -58,6 +58,10 @@ export const getPlanById = async (req,res)=>{
             targetDate:targetDate,
             studyHours:studyHours,
             subject:subject,
+            strengths:strengths,
+            weaknesses:weaknesses,
+            completedTopics:completedTopics,
+            preferredTime:preferredTime,
             user:req.user._id
         });
         
@@ -111,7 +115,7 @@ export const deletePlan = async(req,res) =>{
            message: "Access denied",
         });
       }
-      
+
    const { id } = req.params;
 
    const deletedPlan = await studyPlan.findByIdAndDelete(id);
