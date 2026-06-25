@@ -19,7 +19,6 @@ export default function CreatePlan() {
       [e.target.name]:e.target.value
     });
   }
-  console.log(planData);
   const handleSubmit = async (e) =>{
     e.preventDefault();
     try {

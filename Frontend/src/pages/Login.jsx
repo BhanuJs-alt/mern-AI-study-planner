@@ -1,6 +1,6 @@
 import { useState } from "react";
 import api from "../api/axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 export default function Login() {
   const [formdata,setFormData]=useState(
@@ -60,6 +60,9 @@ export default function Login() {
         onClick={handleSubmit}>
         Login
       </button>
+     <Link to = "/register">
+         <p>new user?register</p>
+     </Link>
     </div>
   );
 }

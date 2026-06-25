@@ -1,6 +1,7 @@
- import { useNavigate } from "react-router-dom";
+ import { useNavigate,Link } from "react-router-dom";
  import { useState,useEffect } from "react";
  import api from "../api/axios";
+ 
 
 export default function Dashboard() {
   const [plans,setPlans] = useState([]);
@@ -24,13 +25,20 @@ export default function Dashboard() {
 
   return (
     <>
-    {
-      plans.map((plan)=>(
-       <div key={plan._id}>
+   
+  {
+    plans.map((plan)=>(
+      <Link  
+      to={`/plans/${plan._id}`}
+      key={plan._id}>
+       <div>
           <h3>{plan.title}</h3>
           <p>{plan.examName}</p>
         </div>
+      </Link>
+
       ))}
+  
       <button onClick={()=>navigate("/plans/new")}>
         Create New Plan
       </button>
