@@ -33,7 +33,7 @@ export default function Register() {
       } catch (error) {
         console.log(error.message);
       }
-  }
+    }
   return(
     <div>
       <h1>Register</h1>

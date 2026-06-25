@@ -1,6 +1,20 @@
  import { useNavigate } from "react-router-dom";
+ import { useState,useEffect } from "react";
+ import api from "../api/axios";
 
 export default function Dashboard() {
+  const [plans,setPlans] = useState([]);
+
+  const fetchPlans = async () =>{
+
+    const response = await api.get("/plans");
+    setPlans(response.data);
+  }
+  
+  useEffect(()=>{
+      fetchPlans();
+  },[]);
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -9,12 +23,22 @@ export default function Dashboard() {
   };
 
   return (
+    <>
+    {
+      plans.map((plan)=>(
+       <div key={plan._id}>
+          <h3>{plan.title}</h3>
+          <p>{plan.examName}</p>
+        </div>
+      ))}
+      <button onClick={()=>navigate("/plans/new")}>
+        Create New Plan
+      </button>
     <div>
-      <h1>Dashboard</h1>
-
       <button onClick={handleLogout}>
         Logout
       </button>
     </div>
+  </>
   );
 }

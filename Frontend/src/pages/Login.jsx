@@ -24,7 +24,7 @@ export default function Login() {
    try {
     const response =  await api.post(
        "auth/login",
-        formdata,
+        formdata
    );
    navigate("/dashboard");
 

@@ -43,9 +43,9 @@ export const getPlanById = async (req,res)=>{
   
   export const createPlan = async (req,res) => {
     try {
-        const { title ,examName,targetDate,studyHours,subject,strengths,weaknesses,completedTopics,preferredTime } = req.body;
+        const { title ,examName,targetDate,studyHours,subjects,strengths,weaknesses,completedTopics,preferredTime } = req.body;
 
-        if (!title || !examName ||!subject || !studyHours) {
+        if (!title || !examName) {
             return res.status(400).json({
               success: false,
               message: "All fields are required",
@@ -57,7 +57,7 @@ export const getPlanById = async (req,res)=>{
             examName:examName,
             targetDate:targetDate,
             studyHours:studyHours,
-            subject:subject,
+            subjects:subjects,
             strengths:strengths,
             weaknesses:weaknesses,
             completedTopics:completedTopics,
