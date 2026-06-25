@@ -21,7 +21,7 @@ export const generatePlan = async (req,res) =>{
             });
         }
 
-        if (plan.generatedSchedule) {
+        if (plan.generatedPlan) {
             return res.status(400).json({
             message: "Schedule already generated"
           });

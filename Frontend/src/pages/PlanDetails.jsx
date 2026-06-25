@@ -16,7 +16,6 @@ export default function PlanDetails(){
            const response = await api.get(`/plans/${id}`);
 
            setPlan(response.data);
-           console.log(response.data);
         } catch (error) {
             console.log(error.response?.data);
         }
@@ -30,7 +29,19 @@ export default function PlanDetails(){
         return <h1>Loading...</h1>;
       }
 
+      const generateSchedule = async()=>{
+       try {
+           const response =  await api.post(`ai/generate-plan/${id}`);
+           console.log(response.data);
+           console.log("schedule created");
+           fetchPlans();
+       } catch (error) {
+        console.log(error.response?.data);
+       }
+      }
+
     return(
+        <>
            <div>
                 <h1>{plan.title}</h1>
 
@@ -41,8 +52,20 @@ export default function PlanDetails(){
                 <p>
                 {plan.subjects?.join(", ")}
                 </p>
+             
            </div>
-
+           <div>
+                <pre>
+                {JSON.stringify(
+                    plan.generatedPlan,
+                    null,
+                    2
+                )}
+                </pre>
+           </div>
+              <button onClick={generateSchedule}>generate schedule</button>
+           
+       </>
     );
 
 }

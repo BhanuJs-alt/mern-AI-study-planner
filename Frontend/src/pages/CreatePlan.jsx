@@ -10,7 +10,7 @@ export default function CreatePlan() {
   examName: "",
   targetDate: "",
   studyHours: "",
-  subjects:[''],
+  subjects:[],
   });
 
   const handleForm = (e)=>{
