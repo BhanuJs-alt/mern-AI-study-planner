@@ -1,10 +1,11 @@
- import { useNavigate,Link } from "react-router-dom";
+ import { useNavigate} from "react-router-dom";
  import { useState,useEffect } from "react";
  import api from "../api/axios";
  import Layout from "../components/layouts/Layout";
  import StatsCard from "../components/StatsCard";
  import PlanCard from "../components/PlanCard";
  import './Dashboard.css';
+//  import {  MdSettings } from "react-icons/md";
 
 export default function Dashboard() {
   const [plans,setPlans] = useState([]);
@@ -20,11 +21,6 @@ export default function Dashboard() {
   },[]);
 
   const navigate = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
 
   return (
     <>
@@ -48,6 +44,7 @@ export default function Dashboard() {
         title="Active Plans"
         value="4"
       />
+       
 
       <StatsCard
         title="Study Streak"
@@ -64,27 +61,17 @@ export default function Dashboard() {
         value="2"
       />
     </div>
-    {
-      plans.map((plan)=>(
-        <Link  
-        to={`/plans/${plan._id}`}
-        key={plan._id}>
-        <div>
-            <h3>{plan.title}</h3>
-            <p>{plan.examName}</p>
-          </div>
-        </Link>
-
-        ))}
-
-        <div className="plans-grid">
+     
+        <div className="plans-grid">                
+          {plans.map((plan) => (
             <PlanCard
-              title="GATE 2027"
-              examDate="15 June 2027"
-              progress={40}
-              generated={true}
-            />
-
+              key={plan._id}
+              title={plan.title}
+              examDate={plan.targetDate}
+              progress={42}
+              generated= {true}
+                  />
+                ))}
             <PlanCard
               title="DSA Prep"
               examDate="20 Dec 2026"
@@ -92,12 +79,6 @@ export default function Dashboard() {
               generated={false}
             />
         </div>
-  
-    <div>
-      <button onClick={handleLogout}>
-        Logout
-      </button>
-    </div>
   </Layout>
   </>
   );

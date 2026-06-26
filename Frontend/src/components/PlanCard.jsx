@@ -1,4 +1,4 @@
-import './PlanCard.css';
+import "./PlanCard.css";
 
 export default function PlanCard({
   title,
@@ -8,23 +8,41 @@ export default function PlanCard({
 }) {
   return (
     <div className="plan-card">
-      <h3>{title}</h3>
+      <div className="plan-header">
+        <h3>{title}</h3>
 
-      <p>{examDate}</p>
-
-      <div>
-        {generated
-          ? "✅ Schedule Generated"
-          : "⚪ Not Generated"}
+        <span className={generated ? "status success" : "status pending"}>
+          {generated ? "Generated" : "Not Generated"}
+        </span>
       </div>
 
-      <div>
-        Progress: {progress}%
+      <p>📅 {examDate}</p>
+
+      <div className="progress-section">
+        <div className="progress-info">
+          <span>Progress</span>
+          <span>{progress}%</span>
+        </div>
+
+        <div className="progress-bar">
+          <div
+            className="progress-fill"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
       </div>
 
-      <button>
-        Show Schedule
-      </button>
+      <div className="plan-actions">
+        {!generated ? (
+          <button className="generate-btn">
+            Generate Schedule
+          </button>
+        ) : (
+          <button className="show-btn">
+            Show Schedule
+          </button>
+        )}
+      </div>
     </div>
   );
 }

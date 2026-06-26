@@ -1,0 +1,23 @@
+.stats-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  padding: 24px;
+
+  transition: var(--transition);
+}
+
+.stats-card:hover {
+  transform: translateY(-3px);
+}
+
+.stats-card p {
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.stats-card h2 {
+  font-size: 2rem;
+}

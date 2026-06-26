@@ -6,5 +6,9 @@
   --text-muted: #bfc0c0;
 
   --primary: #ef8354;
+   --secondary: #4f5d75;
   --border: #bfc0c0;
+  --radius: 12px;
+
+  --transition: 0.25s ease;
 }
