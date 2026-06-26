@@ -6,7 +6,11 @@ export const generatePlan = async (req,res) =>{
         const { id } = req.params;
 
         const plan = await studyPlan.findById(id);
-
+        console.log("Plan:", plan);
+        console.log("generatedPlan:", plan.generatedPlan);
+        console.log("Type:", typeof plan.generatedPlan);
+        console.log("Is Array:", Array.isArray(plan.generatedPlan));
+        console.log("Length:", plan.generatedPlan?.length);
         if(!plan){
             res.status(404).json({
                 message:"Plan not found",
@@ -20,21 +24,21 @@ export const generatePlan = async (req,res) =>{
 
             });
         }
+        
+        if (!plan.generatedPlan || plan.generatedPlan.length === 0) {
+           const result = await generateStudySchedule(plan);
 
-        if (plan.generatedPlan) {
-            return res.status(400).json({
-            message: "Schedule already generated"
+           plan.generatedPlan = result;
+
+           await plan.save();
+           res.status(200).json({
+           aiResponse:result,
           });
         }
 
-        const result = await generateStudySchedule(plan);
-
-        plan.generatedPlan = result;
-
-        await plan.save();
-        res.status(200).json({
-            aiResponse:result,
-        });
+        return res.status(400).json({
+        message: "Schedule already generated"
+      });
 
     } catch (error) {
         res.status(500).json({

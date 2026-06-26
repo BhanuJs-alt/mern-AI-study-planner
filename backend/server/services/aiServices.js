@@ -24,7 +24,7 @@ export async function generateStudySchedule(plan){
                     Weaknesses:
                     ${plan.weaknesses.join(", ")}
 
-                    Create a study schedule till Target Date or 7 days.
+                    Create a study schedule till  7 days.
 
                     Return ONLY a valid JSON object.
                     Do not use markdown.

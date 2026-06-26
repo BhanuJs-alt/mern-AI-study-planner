@@ -80,11 +80,7 @@ export const getPlanById = async (req,res)=>{
 export const updatePlan = async(req,res) =>{
   try {
 
-     if(plan.user.toString() !== req.user._id.toString()){
-           return res.status(403).json({
-           message: "Access denied",
-        });
-      }
+     
 
     const { id } = req.params;
 
@@ -94,6 +90,11 @@ export const updatePlan = async(req,res) =>{
       { new:true }
      );
 
+     if(updateplan.user.toString() !== req.user._id.toString()){
+           return res.status(403).json({
+           message: "Access denied",
+        });
+      }
     
      
      res.json({
@@ -110,16 +111,16 @@ export const updatePlan = async(req,res) =>{
 
 export const deletePlan = async(req,res) =>{
   try {
-     if(plan.user.toString() !== req.user._id.toString()){
-           return res.status(403).json({
-           message: "Access denied",
-        });
-      }
-
+    
    const { id } = req.params;
 
    const deletedPlan = await studyPlan.findByIdAndDelete(id);
 
+    // if(deletedplan.user.toString() !== req.user._id.toString()){
+    //        return res.status(403).json({
+    //        message: "Access denied",
+    //     });
+    //   }
     res.status(200).json({
       message:"Plan deleted",
       deletedPlan

@@ -1,23 +1,19 @@
  import { useNavigate} from "react-router-dom";
  import { useState,useEffect } from "react";
- import api from "../api/axios";
  import Layout from "../components/layouts/Layout";
  import StatsCard from "../components/StatsCard";
  import PlanCard from "../components/PlanCard";
  import './Dashboard.css';
-//  import {  MdSettings } from "react-icons/md";
+ import fetchPlans from "../api/fetchPlans";
+import generateSchedule from "../api/callAI";
+
 
 export default function Dashboard() {
   const [plans,setPlans] = useState([]);
 
-  const fetchPlans = async () =>{
-
-    const response = await api.get("/plans");
-    setPlans(response.data);
-  }
   
   useEffect(()=>{
-      fetchPlans();
+      fetchPlans(setPlans);
   },[]);
 
   const navigate = useNavigate();
@@ -42,7 +38,7 @@ export default function Dashboard() {
     <div className="stats-grid">
       <StatsCard
         title="Active Plans"
-        value="4"
+        value={plans.length}
       />
        
 
@@ -66,18 +62,13 @@ export default function Dashboard() {
           {plans.map((plan) => (
             <PlanCard
               key={plan._id}
+              id = {plan._id}
               title={plan.title}
               examDate={plan.targetDate}
-              progress={42}
-              generated= {true}
+              onGenerate = {()=>generateSchedule(plan._id)}
+              progress={0}
                   />
                 ))}
-            <PlanCard
-              title="DSA Prep"
-              examDate="20 Dec 2026"
-              progress={0}
-              generated={false}
-            />
         </div>
   </Layout>
   </>

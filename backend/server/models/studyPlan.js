@@ -40,7 +40,7 @@ const studyPlanSchema= new mongoose.Schema({
     },
     generatedPlan:{
         type:Object,
-        default:{}
+        default:null
     },
     user:{
         type: mongoose.Schema.Types.ObjectId,
