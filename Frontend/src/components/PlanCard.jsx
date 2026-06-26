@@ -1,3 +1,5 @@
+import './PlanCard.css';
+
 export default function PlanCard({
   title,
   examDate,

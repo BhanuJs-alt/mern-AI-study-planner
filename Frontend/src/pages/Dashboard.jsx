@@ -4,7 +4,7 @@
  import Layout from "../components/layouts/Layout";
  import StatsCard from "../components/StatsCard";
  import PlanCard from "../components/PlanCard";
- 
+ import './Dashboard.css';
 
 export default function Dashboard() {
   const [plans,setPlans] = useState([]);

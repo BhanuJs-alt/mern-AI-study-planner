@@ -1,0 +1,31 @@
+.plan-card {
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+
+  padding: 20px;
+}
+
+.plan-card h3 {
+  margin-top: 0;
+}
+
+.plan-card p {
+  color: var(--text-muted);
+}
+
+.plan-card button {
+  margin-top: 16px;
+
+  width: 100%;
+
+  background: var(--primary);
+  color: white;
+
+  border: none;
+  padding: 12px;
+
+  border-radius: 10px;
+}
