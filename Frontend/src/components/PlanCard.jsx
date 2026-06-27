@@ -1,49 +1,37 @@
 import "./PlanCard.css";
 import { Link} from "react-router-dom";
-import { useState,useEffect } from "react";
-import fetchPlan from '../api/getPlanID';
+import generateSchedule from "../api/callAI";
 
-export default function PlanCard({
-  id,
-  title,
-  examDate,
-  progress,
-  onGenerate,
-}) {
-    
-   const [plan,setPlan] = useState([]);
-
-   useEffect(()=>{
-      fetchPlan(id,setPlan);
-  },[]);
-
-//   const handleGenerate =  () => {
-//    onGenerate;
-//    fetchPlan(id, setPlan); 
-// };
+export default function PlanCard({plan}) {
+  const id = plan._id;
   const  isGenerated = !!plan.generatedPlan;
+  
+  const onGenerate = ()=>{
+    generateSchedule(id);
+  }
+
   return (
     <div className="plan-card">
       <div className="plan-header">
-        <h3>{title}</h3>
+        <h3>{plan.title}</h3>
 
         <span className={isGenerated ? "status success" : "status pending"}>
           {isGenerated ? "Generated" : "Not Generated"}
         </span>
       </div>
 
-      <p>📅 {examDate}</p>
+      <p>📅 {plan.targetDate}</p>
 
       <div className="progress-section">
         <div className="progress-info">
           <span>Progress</span>
-          <span>{progress}%</span>
+          <span>{plan.progress}%</span>
         </div>
 
         <div className="progress-bar">
           <div
             className="progress-fill"
-            style={{ width: `${progress}%` }}
+            style={{ width: `${0}%` }}
           />
         </div>
       </div>

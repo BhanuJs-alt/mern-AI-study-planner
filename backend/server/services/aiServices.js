@@ -25,6 +25,33 @@ export async function generateStudySchedule(plan){
                     ${plan.weaknesses.join(", ")}
 
                     Create a study schedule till  7 days.
+                    Return ONLY valid JSON.
+
+                    Use exactly this schema:
+
+                    {
+                      "exam": "",
+                      "target_date": "",
+                      "study_hours_per_day": 0,
+                      "schedule": [
+                        {
+                          "day": 1,
+                          "day_of_week": "",
+                          "date": "",
+                          "total_study_hours": 0,
+                          "topics": [
+                            {
+                              "topic_name": "",
+                              "duration_hours": 0,
+                              "activities": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+
+                    Do not add extra fields.
+                    Do not rename keys.
 
                     Return ONLY a valid JSON object.
                     Do not use markdown.

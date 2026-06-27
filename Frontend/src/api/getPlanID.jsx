@@ -1,9 +1,9 @@
 import api from "./axios";
 
-const fetchPlan = async (id,setPlan) =>{
+const fetchPlan = async (id) =>{
     try {
         const response = await api.get(`/plans/${id}`);
-         setPlan(response.data) ;
+         return response.data ;
 
     } catch (error) {
         console.log(error.message);

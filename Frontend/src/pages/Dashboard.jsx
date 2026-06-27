@@ -5,7 +5,7 @@
  import PlanCard from "../components/PlanCard";
  import './Dashboard.css';
  import fetchPlans from "../api/fetchPlans";
-import generateSchedule from "../api/callAI";
+
 
 
 export default function Dashboard() {
@@ -61,11 +61,8 @@ export default function Dashboard() {
         <div className="plans-grid">                
           {plans.map((plan) => (
             <PlanCard
+              plan = {plan}
               key={plan._id}
-              id = {plan._id}
-              title={plan.title}
-              examDate={plan.targetDate}
-              onGenerate = {()=>generateSchedule(plan._id)}
               progress={0}
                   />
                 ))}
