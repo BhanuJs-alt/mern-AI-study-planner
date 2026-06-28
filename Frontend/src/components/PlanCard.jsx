@@ -1,15 +1,13 @@
-import "./PlanCard.css";
+import "../styles/PlanCard.css";
 import { Link} from "react-router-dom";
-import generateSchedule from "../api/callAI";
 
-export default function PlanCard({plan}) {
+
+
+export default function PlanCard({plan,onGenerate}) {
+
   const id = plan._id;
-  const  isGenerated = !!plan.generatedPlan;
-  
-  const onGenerate = ()=>{
-    generateSchedule(id);
-  }
 
+  const isGenerated = !!plan.generatedPlan;
   return (
     <div className="plan-card">
       <div className="plan-header">

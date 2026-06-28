@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect,useState } from "react";
 import fetchPlan from "../api/getPlanID";
 import DayCard from "../components/DayCard";
-import './PlanDetails.css';
+import '../styles/PlanDetails.css';
 
 
 export default function PlanDetails(){

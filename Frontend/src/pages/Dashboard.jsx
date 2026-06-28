@@ -3,8 +3,9 @@
  import Layout from "../components/layouts/Layout";
  import StatsCard from "../components/StatsCard";
  import PlanCard from "../components/PlanCard";
- import './Dashboard.css';
+ import '../styles/Dashboard.css';
  import fetchPlans from "../api/fetchPlans";
+import generateSchedule from "../api/callAI";
 
 
 
@@ -63,6 +64,7 @@ export default function Dashboard() {
             <PlanCard
               plan = {plan}
               key={plan._id}
+              onGenerate={()=>{generateSchedule(plan._id)}}
               progress={0}
                   />
                 ))}
