@@ -1,6 +1,28 @@
-export default function StepFour({ formData,prevStep }) {
+import '../../styles/Step4.css';
+import { useNavigate } from 'react-router-dom'
+import api from '../../api/axios';
 
-    return (
+export default function StepFour({ formData,prevStep }) {
+    const navigate = useNavigate();
+    
+    const handleSubmit = async (e) =>{
+    e.preventDefault();
+    try {
+      console.log(formData);
+      const response = await api.post(
+      "/plans",
+      formData
+     );
+      navigate("/dashboard");
+      console.log(response.data);
+
+    } catch (error) {
+      console.log(error.response?.data);
+    }
+  }
+
+
+    return ( 
 
        <div>
 
@@ -21,6 +43,7 @@ export default function StepFour({ formData,prevStep }) {
             <button onClick={prevStep}>
                Prev
           </button>
+            <button onClick={handleSubmit}>Submit</button>
         </div>
 
     );

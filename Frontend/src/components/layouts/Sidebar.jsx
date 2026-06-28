@@ -1,4 +1,4 @@
-import { MdDashboard, MdLogout, MdSettings } from "react-icons/md";
+import { MdDashboard, MdLogout } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import './Sidebar.css';
 
@@ -22,16 +22,6 @@ export default function Sidebar() {
         >
           <MdDashboard size={22} />
           <span>Dashboard</span>
-        </NavLink>
-
-        <NavLink
-          to="/settings"
-          className={({ isActive }) =>
-            isActive ? "nav-link active" : "nav-link"
-          }
-        >
-          <MdSettings size={22} />
-          <span>Settings</span>
         </NavLink>
         <NavLink 
           onClick={handleLogout}

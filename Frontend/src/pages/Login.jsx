@@ -1,6 +1,7 @@
 import { useState } from "react";
 import api from "../api/axios";
 import { useNavigate,Link } from "react-router-dom";
+import '../styles/Login.css';
 
 export default function Login() {
   const [formdata,setFormData]=useState(
@@ -37,32 +38,37 @@ export default function Login() {
   }
   
   return (
-    <div>
-      <h1>Login</h1>
-      <input 
-        name="email"
-        type="email"
-        value={formdata.email}  
-        onChange={handleForm}
-        placeholder="Enter email"
-      />
+    <div className="login-container">
+  <div className="login-card">
+    <h1>Login</h1>
 
-      <input 
-        name="password"
-        type="password"
-        value={formdata.password}
-        onChange={handleForm}
-        placeholder="Enter password"
-      />
+    <input
+      name="email"
+      type="email"
+      value={formdata.email}
+      onChange={handleForm}
+      placeholder="Enter email"
+    />
 
-      <button 
-        type="submit"
-        onClick={handleSubmit}>
-        Login
-      </button>
-     <Link to = "/register">
-         <p>new user?register</p>
-     </Link>
-    </div>
+    <input
+      name="password"
+      type="password"
+      value={formdata.password}
+      onChange={handleForm}
+      placeholder="Enter password"
+    />
+
+    <button
+      type="submit"
+      onClick={handleSubmit}
+    >
+      Login
+    </button>
+
+    <Link to="/register" className="register-link">
+      New user? Register
+    </Link>
+  </div>
+</div>
   );
 }

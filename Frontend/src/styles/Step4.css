@@ -1,0 +1,11 @@
+
+.summary {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: var(--radius);
+    background: var(--bg);
+}
+
+.summary p {
+    margin: .6rem 0;
+}

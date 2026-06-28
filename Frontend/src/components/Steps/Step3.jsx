@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import '../../styles/Step3.css';
 export default function StepThree({ formData, setFormData,nextStep,prevStep }) {
   const [subject, setSubject] = useState("");
 

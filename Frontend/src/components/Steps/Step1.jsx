@@ -1,3 +1,4 @@
+import '../../styles/Step1.css';
 export default function StepOne({
 
     formData,

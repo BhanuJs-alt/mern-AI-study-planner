@@ -5,8 +5,8 @@
  import PlanCard from "../components/PlanCard";
  import '../styles/Dashboard.css';
  import fetchPlans from "../api/fetchPlans";
-import generateSchedule from "../api/callAI";
-
+ import generateSchedule from "../api/callAI";
+ 
 
 
 export default function Dashboard() {
@@ -18,7 +18,6 @@ export default function Dashboard() {
   },[]);
 
   const navigate = useNavigate();
-
   return (
     <>
    <Layout>
@@ -45,17 +44,17 @@ export default function Dashboard() {
 
       <StatsCard
         title="Study Streak"
-        value="12"
+        value="0"
       />
 
       <StatsCard
         title="Hours Studied"
-        value="86"
+        value="0"
       />
 
       <StatsCard
         title="Upcoming Exams"
-        value="2"
+        value="0"
       />
     </div>
      
@@ -64,7 +63,9 @@ export default function Dashboard() {
             <PlanCard
               plan = {plan}
               key={plan._id}
-              onGenerate={()=>{generateSchedule(plan._id)}}
+              onGenerate={()=>{
+                generateSchedule(plan._id);
+              }}
               progress={0}
                   />
                 ))}

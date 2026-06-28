@@ -1,0 +1,40 @@
+.navbar{
+    height:80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 8%;
+    background:#2d3142;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    color:white;
+    font-size:28px;
+    font-weight:700;
+}
+
+
+
+.nav-btns{
+    display:flex;
+    gap:15px;
+}
+
+.login-btn{
+    padding:10px 22px;
+    border:1px solid #ef8354;
+    color:white;
+    border-radius:10px;
+    text-decoration:none;
+}
+
+.start-btn{
+    padding:10px 22px;
+    background:#ef8354;
+    color:white;
+    border-radius:10px;
+    text-decoration:none;
+}

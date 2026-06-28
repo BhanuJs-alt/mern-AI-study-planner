@@ -1,3 +1,4 @@
+import '../../styles/ProgressBar.css';
 export default function ProgressBar({ step }) {
 
     const steps = [

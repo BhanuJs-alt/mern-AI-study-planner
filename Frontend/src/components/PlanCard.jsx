@@ -8,6 +8,7 @@ export default function PlanCard({plan,onGenerate}) {
   const id = plan._id;
 
   const isGenerated = !!plan.generatedPlan;
+
   return (
     <div className="plan-card">
       <div className="plan-header">
@@ -47,6 +48,7 @@ export default function PlanCard({plan,onGenerate}) {
             </button>
           </Link>
         )}
+        <button >  [Delete]</button>
       </div>
     </div>
   );

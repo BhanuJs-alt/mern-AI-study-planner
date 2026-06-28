@@ -1,6 +1,6 @@
 import { useState } from "react";
 import api from "../api/axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 export default function Register() {
 
@@ -35,32 +35,45 @@ export default function Register() {
       }
     }
   return(
-    <div>
-      <h1>Register</h1>
+    <div className="login-container">
+  <div className="login-card">
+    <h1>Register</h1>
 
-      <input  name="name"
+    <input
+      type="text"
+      name="name"
       value={formdata.name}
-      onChange={handleForm}  
-      placeholder="Enter your name" 
-      />
+      onChange={handleForm}
+      placeholder="Enter your name"
+    />
 
-      <input name="email" 
+    <input
+      type="email"
+      name="email"
       value={formdata.email}
       onChange={handleForm}
-      placeholder="Enter your email" 
-      />
+      placeholder="Enter your email"
+    />
 
-      <input name="password"
+    <input
+      type="password"
+      name="password"
       value={formdata.password}
-      onChange={handleForm} 
-      placeholder="Password" 
-      />
+      onChange={handleForm}
+      placeholder="Password"
+    />
 
-      <button type="submit"
-      onClick={handleSubmit}>
+    <button
+      type="submit"
+      onClick={handleSubmit}
+    >
       Register
-      </button>
+    </button>
 
-    </div>
+    <Link to="/login" className="register-link">
+      Already have an account? Login
+    </Link>
+  </div>
+</div>
   );
 }

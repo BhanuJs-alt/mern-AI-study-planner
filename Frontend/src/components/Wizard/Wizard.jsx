@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import '../../styles/Wizard.css';
 import Step1 from '../Steps/Step1';
 import Step2 from '../Steps/Step2';
 import Step3 from '../Steps/Step3';

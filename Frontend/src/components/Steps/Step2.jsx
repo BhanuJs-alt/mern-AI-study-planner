@@ -1,3 +1,4 @@
+import '../../styles/Step2.css';
 export default function StepTwo({ formData, setFormData,nextStep,prevStep }) {
 
     const handleChange = (e) => {

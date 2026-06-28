@@ -9,10 +9,8 @@ export default function PlanDetails(){
    const { id }  = useParams();
    const [plan,setPlan] = useState({});
     
-    console.log("Current id:", id);
    
     useEffect(() => {
-            console.log("Fetching:", id);
             async function loadPlan() {
             const data = await fetchPlan(id);
             setPlan(data);
@@ -22,7 +20,6 @@ export default function PlanDetails(){
     }, [id]);
 
     useEffect(() => {
-    console.log(plan);
     }, [plan]);
     return(
     <>  

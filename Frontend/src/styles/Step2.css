@@ -1,0 +1,14 @@
+.step input[type="date"] {
+    width: 100%;
+}
+
+.step input[type="range"] {
+    width: 100%;
+    cursor: pointer;
+}
+
+.study-hours {
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary);
+}
